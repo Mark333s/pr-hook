@@ -7,12 +7,16 @@ function App() {
  const [data, setData] = useState([])
   
 
+useEffect(()=>{
+  const raw = localStorage.getItem('data') || []
+  setData(JSON.parse(raw))
+}, [])
 
-  // useEffect(()=>{
-  //   fetch('https://jsonplaceholder.typicode.com/posts')
-  //      .then(response => response.json())
-  //      .then(json => setData(json))
-  // }, [data])
+
+  useEffect(()=>{
+     localStorage.setItem('data', JSON.stringify(data))
+  }, [data])
+
 
   const getData = ()=>{
     fetch('https://jsonplaceholder.typicode.com/posts')
@@ -30,7 +34,7 @@ function App() {
             
             <hr/>
        <button className='btn' onClick={()=>{
-           getData()
+         getData()
        }}> Add from JSON</button>
 
     </div>
