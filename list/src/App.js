@@ -24,6 +24,11 @@ useEffect(()=>{
     .then(json => setData(json))
   }
 
+ const removeData = () => {
+   setData('')
+ }
+ 
+
  return (
 <>
 
@@ -36,6 +41,9 @@ useEffect(()=>{
        <button className='btn' onClick={()=>{
          getData()
        }}> Add from JSON</button>
+       <button className='bntS' onClick={()=>{
+          removeData()
+       }}>Delete from JSON</button>
 
     </div>
     </>
